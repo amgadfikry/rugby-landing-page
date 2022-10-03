@@ -1,0 +1,232 @@
+:root {
+  font-size: calc(0.5em + 1vw);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.one {
+  width: 100%;
+  background-color: #1e1e1e;
+  padding: 20px;
+  position: relative;
+  display: grid;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  grid-template-rows: auto;
+  align-items: stretch;
+  justify-items: stretch;
+  grid-template-columns: repeat(1, calc((100% + 15px) / 1 - 15px));
+}
+@media (min-width: 768px) {
+  .one {
+    width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 992px) {
+  .one {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 1200px) {
+  .one {
+    width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 1400px) {
+  .one {
+    width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 576px) {
+  .one {
+    grid-template-columns: repeat(2, calc((100% + 15px) / 2 - 15px));
+    display: grid;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    grid-template-rows: auto;
+    align-items: stretch;
+    justify-items: stretch;
+  }
+}
+@media (min-width: 768px) {
+  .one {
+    grid-template-columns: repeat(4, calc((100% + 15px) / 4 - 15px));
+    display: grid;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    grid-template-rows: auto;
+    align-items: stretch;
+    justify-items: stretch;
+  }
+}
+@media (min-width: 992px) {
+  .one {
+    grid-template-columns: repeat(6, calc((100% + 15px) / 6 - 15px));
+    display: grid;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    grid-template-rows: auto;
+    align-items: stretch;
+    justify-items: stretch;
+  }
+}
+@media (min-width: 1200px) {
+  .one {
+    grid-template-columns: repeat(10, calc((100% + 15px) / 10 - 15px));
+    display: grid;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    grid-template-rows: auto;
+    align-items: stretch;
+    justify-items: stretch;
+  }
+}
+.one .child-1 {
+  background-color: #ff3e3e;
+  width: 100%;
+  height: 300px;
+}
+.one .child-2 {
+  background-color: rgba(255, 62, 62, 0.5);
+  width: 100%;
+  height: 300px;
+}
+.one .child-3 {
+  background-color: rgba(255, 62, 62, 0.3333333333);
+  width: 100%;
+  height: 300px;
+}
+.one .child-4 {
+  background-color: rgba(255, 62, 62, 0.25);
+  width: 100%;
+  height: 300px;
+}
+.one .child-5 {
+  background-color: rgba(255, 62, 62, 0.2);
+  width: 100%;
+  height: 300px;
+}
+.one .child-6 {
+  background-color: rgba(255, 62, 62, 0.1666666667);
+  width: 100%;
+  height: 300px;
+}
+.one .child-7 {
+  background-color: rgba(255, 62, 62, 0.1428571429);
+  width: 100%;
+  height: 300px;
+}
+.one .child-8 {
+  background-color: rgba(255, 62, 62, 0.125);
+  width: 100%;
+  height: 300px;
+}
+.one .child-9 {
+  background-color: rgba(255, 62, 62, 0.1111111111);
+  width: 100%;
+  height: 300px;
+}
+.one .child-10 {
+  background-color: rgba(255, 62, 62, 0.1);
+  width: 100%;
+  height: 300px;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  padding: 50px;
+  margin-top: 50px;
+  border: 2px solid #ff3e3e;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 0;
+}
+@media (min-width: 0) {
+  .btn {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 576px) {
+  .btn {
+    width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 768px) {
+  .btn {
+    width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 992px) {
+  .btn {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 1200px) {
+  .btn {
+    width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 1400px) {
+  .btn {
+    width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.btn button {
+  display: block;
+  text-align: center;
+  background-color: transparent;
+  color: #1e1e1e;
+  border-radius: 5px;
+  border: 2px solid #1e1e1e;
+  outline: 0;
+  transition: 0.3s;
+  cursor: pointer;
+  padding: 7px 15px;
+  font-size: 1rem;
+}
+.btn button:hover {
+  background-color: #1e1e1e;
+  color: white;
+  border-color: #1e1e1e;
+  outline: 0;
+}
+
+/*# sourceMappingURL=main.css.map */

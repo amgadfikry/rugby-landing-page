@@ -1,0 +1,252 @@
+//screen size bfor responsive breakpoints
+$screen-size:(
+    xs:0,
+    sm:576px,
+    md:768px,
+    lg:992px,
+    xl:1200px,
+    xxl:1400px,
+);
+//container width for every breakpoint size
+$container-width:(
+    xs:100%,
+    sm:540px,
+    md:720px,
+    lg:960px,
+    xl:1140px,
+    xxl:1320px,
+);
+//mixin for make element in container width for all screen
+@mixin container-all{
+    @each $key , $val in $screen-size {
+        @media (min-width:$val){
+            width: map-get($container-width,$key);
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+//mixin for make element in container starting from specific breakpoint accept one parameter
+//1-breakpoint screen size from $screen-size map
+@mixin container-breakpoint($break){
+    width: 100%;
+    @each $key,$val in $screen-size {
+        @if $val >= map-get($screen-size, $break){
+            @media (min-width:$val){
+                width: map-get($container-width, $key );
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+}
+//mixin for make image responsive with no parameters
+@mixin img-responsive {
+    display: block;
+    width:100%;
+    height: auto;
+}
+//mixin for make element in full width with no parameters
+@mixin container-full {
+    width: 100%;
+}
+//mixin for add style at min-width breakpoint with one parameter from $screen-size map
+//1-min-width
+@mixin media-min ($min-width){
+    @media (min-width:map-get($screen-size,$min-width)){
+        @content;
+    }
+}
+//mixin for add style at max-width breakpoint with one parameter from $screen-size map
+//1-max-width
+@mixin media-max ($max-width){
+    @media (max-width:map-get($screen-size,$max-width)) {
+        @content;
+    }
+}
+//mixin for add style between two breakpoints accept two parameter from $screen-size map
+//1-min-width
+//2-max-width
+@mixin media-between ($min-width,$max-width) {
+    @media (min-width:map-get($screen-size,$min-width)) and (max-width:map-get($screen-size,$max-width)) {
+        @content;
+    }
+}
+//mixin for center items with flexbox accept one parameter
+//1-direction of flex => default value is row
+@mixin flex-center ($direction:row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+}
+//mixin for control flexbox of parent accept four parameters
+//1-direction of flex => default is row
+//2-justify content (center, flex-start, flex-end, space-between, space-evenly, space-around)
+//3-align-items (center, flex-start, flex-end, stretch)
+//4-flex-wrap => defalut nowrap
+@mixin flex ($direction:row,$justify,$align,$wrap:nowrap,){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: $wrap;
+}
+//mixin for make absoulte position accept five parameters
+//1-top
+//2-right
+//3-bottom
+//4-translation on x-axis
+//5-translation on y-axis
+@mixin absolute ($top, $right, $bottom, $left,$x,$y) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    transform: translateX($x) translateY($y);
+}
+//mixin for center items with absolute position with no parameters
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+//mixin for make grid system according to screen size accept 6 parameters
+//1-screen start size min width accord to $screen-size map => default value is xs or 0
+//2-number of items in each column => default value is 1
+//3-gap in row direction => default is 15 px
+//4-gap in column direction => default is 15 px
+
+@mixin grid ($screen-start:xs,$items-on-column:1,$gap-row:15px,$gap-column:15px,$align-y:stretch,$justify-x:stretch){
+    @if $screen-start==xs{
+        display: grid;
+        grid-column-gap: $gap-column;
+        grid-row-gap: $gap-row;
+        grid-template-rows: auto;
+        align-items: $align-y;
+        justify-items: $justify-x;
+        grid-template-columns: repeat($items-on-column, calc((calc(100% + $gap-column)/$items-on-column) - $gap-column));
+    } @else {
+        @media (min-width:map-get($screen-size,$screen-start)){
+            grid-template-columns: repeat($items-on-column, calc((calc(100% + $gap-column)/$items-on-column) - $gap-column));
+            display: grid;
+            grid-column-gap: $gap-column;
+            grid-row-gap: $gap-row;
+            grid-template-rows: auto;
+            align-items: $align-y;
+            justify-items: $justify-x;
+        }
+    };
+}
+//mixin for create frame of button accept five parameters
+//1- background color
+//2-text color
+//3-border width
+//4-border color
+//5-border radius
+@mixin button-frame ($background,$text-color,$border-width,$border-color,$radius) {
+    display: block;
+    text-align: center;
+    background-color: $background;
+    color: $text-color;
+    border-radius: $radius;
+    border: $border-width solid $border-color;
+    outline:0;
+    transition: 0.3s;
+    cursor: pointer;
+}
+//mixin for manipulate button size and padding accept three parameters
+//1-padding on x-axis
+//2-padding on y-axis
+//3-font size => default is 1rem
+@mixin button-size ($pad-x,$pad-y,$font:1rem){
+    padding: $pad-y $pad-x;
+    font-size: $font;
+}
+//mixin to create hover on button accept three parameters
+//1- background color
+//2-text color
+//3-border color
+@mixin button-hover($background,$text-color,$border-color){
+    &:hover{
+        background-color: $background;
+        color: $text-color;
+        border-color:$border-color;
+        outline: 0;
+    }
+}
+//mixin to create paragraph with different options accept five parameters
+//1-font size => default inherit from parent
+//2-font weight => default 400
+//3-line height => default is 1
+//4-color => default is inherit
+//5-opacity => default is 1
+@mixin paragrapgh($size:inherit,$weight:400,$height:1,$color:inherit,$opacity:1) {
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $height;
+    color: $color;
+    opacity: $opacity;
+}
+//mixin for create sticky position accept four parameters
+//1-top
+//2-right
+//3-bottom
+//4-left
+@mixin sticky($top:null,$right:null,$bottom:null,$left:null){
+    position: sticky;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+//mixin for create fixed position accept four parameters
+//1-top
+//2-right
+//3-bottom
+//4-left
+@mixin fixed($top:null,$right:null,$bottom:null,$left:null){
+    position: fixed;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+//mixin to create one transition and manipulate it accept four parameters
+//1- time of transition
+//2- property apply tranisition on it => default is all
+//3- timing-function  => default is ease (ease-in,ease-out,ease-in-out,linear,step-start,step-end,steps(steps,way))
+//4- delayed time => default is 0
+@mixin one-transition($time,$property:all,$function:ease,$delay:0){
+    transition: $property $time $function $delay;
+}
+//mixin to create multiple transition and manipulate them with unlimited parameters
+//accept first transition then rest transitions with syntax (property time timing-function delay) separeted with comma
+@mixin multiple-transition($first-transition,$rest-transitions...) {
+    transition:$first-transition,$rest-transitions;
+}
+//mixin to manipulate four direction borders accept four parameters
+//1-top direction with all value width style color
+//2-right direction with all value width style color
+//3-bottom direction with all value width style color
+//4-left direction with all value width style color
+@mixin border-control($top,$right,$bottom,$left){
+    border-top: $top;
+    border-left: $left;
+    border-bottom: $bottom;
+    border-right:$right;
+}
+//mixin to manipulate four corner of element border radius accept four parameters
+//1-top-left corner
+//2-top-right corner
+//3-bottom-right corner
+//4-bottom-left corner
+@mixin border-radius($top-left,$top-right,$bottom-right,$bottom-left) {
+    border-top-left-radius: $top-left;
+    border-top-right-radius: $top-right;
+    border-bottom-right-radius: $bottom-right;
+    border-bottom-left-radius: $bottom-left;
+}
