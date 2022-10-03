@@ -79,7 +79,6 @@ $container-width:(
     flex-direction: $direction;
     justify-content: center;
     align-items: center;
-    align-items: center;
 }
 //mixin for control flexbox of parent accept four parameters
 //1-direction of flex => default is row
@@ -220,7 +219,7 @@ $container-width:(
 //2- property apply tranisition on it => default is all
 //3- timing-function  => default is ease (ease-in,ease-out,ease-in-out,linear,step-start,step-end,steps(steps,way))
 //4- delayed time => default is 0
-@mixin one-transition($time,$property:all,$function:ease,$delay:0){
+@mixin one-transition($time,$property:all,$function:ease,$delay:null){
     transition: $property $time $function $delay;
 }
 //mixin to create multiple transition and manipulate them with unlimited parameters

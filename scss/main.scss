@@ -1,37 +1,76 @@
 @use "basics" as *;
 @use "variables" as *;
 @use "mixins" as *;
+@import "fixed-parts";
 
-
-
-.one{
-    @include container-breakpoint(md);
-    background-color: $black-color;
-    padding: 20px;
-    position: relative;
-    @include grid();
-    @include grid(sm ,2);
-    @include grid(md ,4);
-    @include grid(lg,6);
-    @include grid(xl,10);
-    @for $i from 1 through 10 {
-        .child-#{$i}{
-            background-color: rgba($red-color,(1/$i));
-            width: 100%;
-            height: 300px;
+body{
+    overflow: hidden;
+}
+//start navbar
+.nav{
+    @include container-full;
+    @include sticky(0,0,null,null);
+}
+.navbar{
+    @include container-all;
+    background-color: $main-color;
+    @include flex(row,null,center,);
+    padding: 10px;
+    .logo{
+        font-family: $head-font;
+        font-weight: 600;
+        font-size: 36px;
+        margin-right: auto;
+        a{
+            color:$black-color;
+        }
+    }
+    .inactive{
+        transform: translateX(200%);
+    }
+    .links{
+        @include absolute(0,0,null,null,null,null);
+        background-color: $main-color;
+        padding: 10px ;
+        z-index: 2;
+        @include one-transition(0.3s,);
+        ul{
+            padding: 20px 0;
+        }
+        li{
+            padding: 10px 60px;
+            background-color: transparent;
+            @include one-transition(0.3s,);
+            &:hover{
+                background-color: darken($main-color,10%);
+            }
+        }
+        a{
+            color: $black-color;
+            font-family: $head-font;
+        }
+        @include media-min(lg){
+            position: relative;
+            background: transparent;
+            padding: 0;
+            transform: translateY(0);
+            .icon-close{
+                display: none;
+            }
+            ul{
+                padding: 0;
+                @include flex(row,null,center);
+            }
+            li{
+                padding: 10px 10px;
+            }
+        }
+    }
+    @include media-min(lg){
+        .icon-menu{
+            display: none;
         }
     }
 }
-.btn{
-    @include flex-center;
-    padding: 50px;
-    @include container-all;
-    margin-top: 50px;
-    border: 2px solid $red-color;
-    @include border-radius (20px,0,20px,0);
-    button{
-        @include button-frame(transparent,$black-color,2px,$black-color,5px);
-        @include button-size(15px,7px);
-        @include button-hover($black-color,white,$black-color);
-    }
-}
+
+//end navbar
