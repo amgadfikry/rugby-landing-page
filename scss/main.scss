@@ -4,18 +4,25 @@
 @import "fixed-parts";
 
 body{
-    overflow: hidden;
+    background-image: url(../assets/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
+}
+img{
+    @include img-responsive;
 }
 //start navbar
 .nav{
     @include container-full;
     @include sticky(0,0,null,null);
+    z-index: 1;
 }
 .navbar{
     @include container-all;
     background-color: $main-color;
     @include flex(row,null,center,);
-    padding: 10px;
+    padding: 5px;
     .logo{
         font-family: $head-font;
         font-weight: 600;
@@ -72,5 +79,152 @@ body{
         }
     }
 }
-
 //end navbar
+
+//start main section
+main{
+    @include container-full;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    h2{
+        font-family: $head-font;
+        @include absolute(null,null,-30%,0,null,null);
+        font-size: 26vw;
+    }
+}
+.main-section{
+    @include container-all;
+    position: relative;
+    .main-left-arrow{
+        @include absolute(20px,0,null,null,null,null);
+        width: 10%;
+    }
+    .main-right-arrow{
+        @include absolute(20px,null,null,0,null,null);
+        width: 10%;
+    }
+    .main-photos{
+        position: relative;
+        img{
+            @include one-transition(0.4s,);
+            transform: translateX(200%);
+            position: absolute;
+        }
+        .active-photo{
+            transform: translateX(0);
+            position: relative;
+        }
+    }
+    .main-content{
+        @include absolute(30%,null,null,50%,-50%,-50%);
+        h1{
+            text-align: center;
+            font-size: 1.2rem;
+            @include media-min(sm){
+                font-size: 1.5rem;
+            }
+            @include media-min(lg){
+                font-size: 2rem;
+            }
+            span{
+                background-color: $red-color;
+                padding: 0 6px;
+                position: relative;
+                &::after{
+                    content: "";
+                    @include absolute(-10px,-5px,null,null,null,null);
+                    width: 5px;
+                    height: 5px;
+                    background-color: $red-color;
+                    border-radius: 50%;
+                }
+            }
+        }
+        .btn{
+            margin-top: 20px;
+            button{
+                @include one-transition(0.3s,);
+                @include button-frame(white,$black-color,0,null,null);
+                @include button-size(10px, 5px,0.6rem);
+                @include button-hover($red-color,white,null);
+                margin:0 auto;
+                @include media-min(md){
+                    @include button-size(10px,5px,1rem)
+                }
+            }
+        }
+        .three-dots{
+            @include flex(row,space-between,center);
+            margin: 10px auto 0;
+            width: 20%;
+            .dot{
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                cursor: pointer;
+                background-color: $main-color;
+                @include media-min(lg){
+                    width: 8px;
+                    height: 8px;
+                    margin-top: 20px;
+                }
+            }
+            .active-dot{
+                background-color: $red-color;
+            }
+        }
+    }
+}
+//end main section
+
+//start date section
+.date-section{
+    @include container-full;
+    background-color: $main-color;
+    @include flex-center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    .left-white-strips{
+        @include absolute(50%,null,null,-4vw,0,-50%);
+        width: 10%;
+    }
+    .right-white-strips{
+        width: 10%;
+        @include absolute(50%,-4vw,null,null,0,-50%);
+    }
+    .date-content{
+        text-align: center;
+        font-family: $head-font;
+        h3{
+            color: white;
+            text-transform: capitalize;
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+        .p{
+            font-weight: 900;
+            @include flex-center;
+            p{
+                font-size: 1.5rem;
+                @include media-min(md){
+                    font-size: 2.5rem;
+                }
+            }
+            span{
+                font-size: 2.5rem;
+                padding: 0 20px;
+                @include media-min(md){
+                    font-size: 5rem;
+                }
+            }
+        }
+    }
+
+}
+//end date section
+
+//start ball in hand section
+
+//end ball in hand section
