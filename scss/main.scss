@@ -8,6 +8,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment:fixed;
+    overflow-x: hidden;
 }
 img{
     @include img-responsive;
@@ -226,5 +227,83 @@ main{
 //end date section
 
 //start ball in hand section
-
+.ball-section{
+    position: relative;
+    @include container-full;
+    padding: 50px 0;
+    .left-strips-ball{
+        width: 10%;
+        @include absolute(30px,null,null,-4vw,null,null);
+    }
+    .right-strips-ball{
+        width: 10%;
+        @include absolute(null,-4vw,30px,null,null,null);
+    }
+    .ball-container{
+        @include container-all;
+        @include grid();
+        @include grid(lg,2,);
+        .photo-part{
+            position: relative;
+            img{
+                @include img-responsive;
+            }
+            .show-img{
+                @include absolute(0,null,null,-10%,null,null);
+                @include media-min(sm){
+                    @include absolute(0,null,null,-20%,null,null);
+                }
+            }
+            .hidden-img{
+                visibility: hidden;
+            }
+        }
+        .content-part{
+            @include flex-center;
+            .cont{
+                margin: 20px 0;
+                position: relative;
+                @include flex-center(column);
+                @include media-min(lg){
+                    @include flex(column,null,start);
+                }
+            }
+            h3{
+                font-family: $head-font;
+                font-size: 1.5rem;
+                color: $main-color;
+                margin-bottom: 15px;
+            }
+            p{
+                @include paragrapgh(1rem,400,2,white,);
+                text-align: center;
+                margin-bottom: 35px;
+                @include media-min(lg){
+                    text-align: start;
+                }
+            }
+            button{
+                @include button-frame($main-color,$black-color,0,null,null);
+                @include button-size(10px,5px,);
+                @include button-hover($red-color,white,null);
+                @include one-transition(0.3s);
+            }
+            .right-arrow-ball{
+                @include absolute(-40px,0,null,null,null,null);
+                width: 15%;
+            }
+            .left-arrow-ball{
+                width: 15%;
+                @include absolute(null,null,-40px,0,null,null);
+                @include media-min(lg){
+                    @include absolute(null,null,-50px,-5vw,null,null);
+                }
+            }
+        }
+    }
+}
 //end ball in hand section
+
+//start 2players section
+
+//end 2players section
