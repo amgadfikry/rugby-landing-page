@@ -305,5 +305,26 @@ main{
 //end ball in hand section
 
 //start 2players section
-
+.two-players-section{
+    @include container-full;
+    padding: 50px 0;
+    .two-players-container{
+        @include container-all;
+        @include grid();
+        @include grid(lg,2);
+    }
+    .cont{
+        position: relative;
+        @include flex-center;
+    }
+    .content-part{
+        @include flex-center(column);
+        @include media-min(lg){
+            @include flex(column,null,start);
+        }
+        h3{
+          
+        }
+    }
+}
 //end 2players section
