@@ -29,3 +29,24 @@ $black-color:#1e1e1e;
     @include button-hover($red-color,white,null);
     @include one-transition(0.3s);
 }
+
+@mixin btn-white {
+    @include one-transition(0.3s,);
+    @include button-frame(white,$black-color,0,null,null);
+    @include button-size(10px, 5px,0.6rem);
+    @include button-hover($red-color,white,null);
+}
+
+@mixin stram-red-dot{
+    background-color: $red-color;
+    padding: 0 6px;
+    position: relative;
+    &::after{
+        content: "";
+        @include absolute(-10px,-5px,null,null,null,null);
+        width: 5px;
+        height: 5px;
+        background-color: $red-color;
+        border-radius: 50%;
+    }
+}

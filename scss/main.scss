@@ -8,6 +8,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment:fixed;
+    overflow-x: hidden;
 }
 img{
     @include img-responsive;
@@ -128,26 +129,13 @@ main{
                 font-size: 2rem;
             }
             span{
-                background-color: $red-color;
-                padding: 0 6px;
-                position: relative;
-                &::after{
-                    content: "";
-                    @include absolute(-10px,-5px,null,null,null,null);
-                    width: 5px;
-                    height: 5px;
-                    background-color: $red-color;
-                    border-radius: 50%;
-                }
+                @include stram-red-dot;
             }
         }
         .btn{
             margin-top: 20px;
             button{
-                @include one-transition(0.3s,);
-                @include button-frame(white,$black-color,0,null,null);
-                @include button-size(10px, 5px,0.6rem);
-                @include button-hover($red-color,white,null);
+               @include btn-white;
                 margin:0 auto;
                 @include media-min(md){
                     @include button-size(10px,5px,1rem)
@@ -356,7 +344,7 @@ main{
         .two-players-strips{
             width: 15%;
             z-index: -2;
-            @include absolute(30%,null,null,0,null,null)
+            @include absolute(30%,null,null,2%,null,null)
         }
     }
 
@@ -369,9 +357,16 @@ main{
     padding: 50px 0;
     .both-container{
         @include container-all;
+        @include flex(column,null,null);
     }
     .cont{
         position: relative;
+        order: 2;
+        margin: 30px 0;
+        @include media-min(lg){
+            margin: 0;
+            order: 0;
+        }
         .top-arrow-both-section{
             @include absolute(0,null,null,0,null,null);
             transform: rotate(90deg);
@@ -407,17 +402,197 @@ main{
         }
     }
     .photo-part{
-        @include flex(row,space-between, center);
+        @include grid();
+        @include grid(lg,2,15px,15px,end,);
         padding: 20px 0;
+        margin-top: -50px;
+        @include media-min(lg){
+            margin-top: 0;
+        }
         img{
             @include img-responsive;
         }
         .player-one{
-            padding-right: 50px;
+            margin: 0 5vw;
+            position: relative;
+            &::after{
+                content: "";
+                width: 100%;
+                height: 80%;
+                background-color: $main-color;
+                @include absolute(null,null,0,null,null,null);
+                z-index: -1;
+            }
+            .blue-strips-player-one{
+                width: 20%;
+                @include absolute(30%,null,null,-4vw,null,null);
+            }
         }
         .player-two{
-            padding-left: 50px;
+            @extend .player-one;
+            .blue-strips-player-two{
+                width: 20%;
+                @include absolute(null,-4vw,10%,null,null,null);
+            }
         }
     }
 }
 //end both section
+
+//start blue section
+.blue-section{
+    @include container-full;
+    padding: 50px 0;
+    overflow: hidden;
+    .blue-container{
+        @include container-all;
+        @include grid();
+        @include grid(lg,2,)
+    }
+    .photo-part{
+        position: relative;
+        img{
+            @include img-responsive;
+        }
+        .visible{
+            @include absolute(null,null,0,-15vw,null,null);
+            @include media-min(lg){
+                left: -10vw;
+            }
+        }
+        .hide{
+            visibility: hidden;
+        }
+        &::after{
+            content: "";
+            width:200vw ;
+            height: 60%;
+            background-color: $main-color;
+            @include absolute(null,null,0,-20vw,null,null);
+            z-index: -1;
+        }
+        .blue-strips-blue-section{
+            width: 20%;
+            transform: rotate(90deg);
+            @include absolute(35%,0,null,null,null,null);
+        }
+    }
+    .content-part{
+        height: 100%;
+        position: relative;
+        @include flex(column,null,center);
+        @include media-min(lg){
+            @include flex(column,null,start);
+        }
+        padding: 20px 0;
+        .right-arrow-blue-section{
+            width: 15%;
+            @include absolute(null,0,5%,null,null,null);
+            @include media-max(lg){
+                bottom: 0;
+            }
+        }
+        h3{
+            @include h3;
+            color: white;
+            letter-spacing: 0.5rem;
+            text-align: center;
+            @include media-min(lg){
+                margin-bottom: auto;
+                margin-top: 50px;
+                text-align: start;
+            }
+        }
+        p{
+            @include p;
+            @include media-min(lg){
+                color: $black-color;
+            }
+        }
+        button{
+            @include btn-white;
+            font-size: 1rem;
+            @include media-min(lg){
+                margin-bottom: 25px;
+            }
+            @include media-min(xl){
+                margin-bottom: 50px;
+            }
+        }
+    }
+}
+//end blue section
+
+//start stream section
+.stream-section{
+    @include container-full;
+    padding: 50px 0;
+    margin-top: 0;
+    @include media-min(md){
+        margin-top: 50px
+    }
+    @include media-min(lg){
+        margin-top: 100px
+    }
+    .stream-container{
+        @include container-all;
+        @include flex-center;
+        position: relative;
+    }
+    .head{
+        @include absolute(-5vw,null,null,0,null,null);
+        font-size: 1.5rem;
+        color: white;
+        padding: 0 10px;
+        z-index: 2;
+        @include media-min(sm){
+            padding: 0;
+        }
+        .bold{
+            font-weight: 700;
+            font-family: $head-font;
+            letter-spacing: 0.2rem
+        }
+        .red{
+            @include stram-red-dot;
+        }
+    }
+    .video{
+        padding: 10px;
+        video{
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            position: relative;
+        }
+        .left-border{
+            width: 100%;
+            height: 50%;
+            @include absolute(null,null,7px,7px,null,null);
+            border-left:10px solid $main-color;
+        }
+        .bottom-border{
+            width: 50%;
+            height: 100%;
+            @include absolute(null,null,7px,7px,null,null);
+            border-bottom: 10px solid $main-color;
+        }
+        .right-border{
+            width: 100%;
+            height: 50%;
+            @include absolute(7px,7px,null,null,null,null);
+            border-right: 10px solid $main-color;
+        }
+        .top-border{
+            width: 50%;
+            height: 100%;
+            @include absolute(7px,7px,null,null,null,null);
+            border-top: 10px solid $main-color;
+        }
+    }
+}
+//end stream section
+
+//start posts section
+
+//end posts section
