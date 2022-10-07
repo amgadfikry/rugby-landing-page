@@ -8,7 +8,6 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment:fixed;
-    overflow-x: hidden;
 }
 img{
     @include img-responsive;
@@ -269,24 +268,13 @@ main{
                 }
             }
             h3{
-                font-family: $head-font;
-                font-size: 1.5rem;
-                color: $main-color;
-                margin-bottom: 15px;
+                @include h3;
             }
             p{
-                @include paragrapgh(1rem,400,2,white,);
-                text-align: center;
-                margin-bottom: 35px;
-                @include media-min(lg){
-                    text-align: start;
-                }
+                @include p ;
             }
             button{
-                @include button-frame($main-color,$black-color,0,null,null);
-                @include button-size(10px,5px,);
-                @include button-hover($red-color,white,null);
-                @include one-transition(0.3s);
+                @include btn;
             }
             .right-arrow-ball{
                 @include absolute(-40px,0,null,null,null,null);
@@ -307,7 +295,7 @@ main{
 //start 2players section
 .two-players-section{
     @include container-full;
-    padding: 50px 0;
+    padding: 80px 0;
     .two-players-container{
         @include container-all;
         @include grid();
@@ -316,15 +304,120 @@ main{
     .cont{
         position: relative;
         @include flex-center;
+        order: 2;
+        margin-top: 40px;
+        @include media-min(lg){
+            margin-top: 0;
+            order: 0;
+        }
+    }
+    .left-arrow-two-playes{
+        width: 15%;
+        @include absolute(null,0,0,null,null,null);
+    }
+    .right-arrow-two-players{
+        width: 15%;
+        @include absolute(0,null,null,0,null,null);
     }
     .content-part{
+        padding: 0 20px;
         @include flex-center(column);
         @include media-min(lg){
             @include flex(column,null,start);
         }
         h3{
-          
+            @include h3;
+        }
+        p{
+            @include p ;
+        }
+        button{
+            @include btn;
+        }
+    }
+    .photo-part{
+        position: relative;
+        img{
+            @include img-responsive;
+        }
+        &::after{
+            content: "";
+            width: 110%;
+            height: 80%;
+            @include absolute(null,-17vw,0,null,null,null);
+            @include media-min(lg){
+                @include absolute(null,-12vw,0,null,null,null);
+                width: 120%;
+                height: 80%;
+            }
+            background-color: $main-color;
+            z-index: -1;
+        }
+        .two-players-strips{
+            width: 15%;
+            z-index: -2;
+            @include absolute(30%,null,null,0,null,null)
+        }
+    }
+
+}
+//end 2players section
+
+//start both section
+.both-section{
+    @include container-full;
+    padding: 50px 0;
+    .both-container{
+        @include container-all;
+    }
+    .cont{
+        position: relative;
+        .top-arrow-both-section{
+            @include absolute(0,null,null,0,null,null);
+            transform: rotate(90deg);
+            transform-origin: 0;
+            width: 15%;
+            @include media-max(lg){
+                transform: rotate(0);
+            }
+        }
+        .bottom-arrow-both-section{
+            @include absolute(null,-12vw,0,null,null,null);
+            transform: rotate(270deg);
+            transform-origin: 0;
+            width: 15%;
+            @include media-max(lg){
+                transform: rotate(180deg);
+                bottom: -4vw;
+            }
+        }
+    }
+    .content-part{
+        @include flex-center(column);
+        padding: 0;
+        @include media-min(lg){
+            padding: 0 25%;
+        }
+        h3{
+            @include h3;
+        }
+        p{
+            @include paragrapgh(1rem,400,2,white,);
+            text-align: center;
+        }
+    }
+    .photo-part{
+        @include flex(row,space-between, center);
+        padding: 20px 0;
+        img{
+            @include img-responsive;
+        }
+        .player-one{
+            padding-right: 50px;
+        }
+        .player-two{
+            padding-left: 50px;
         }
     }
 }
-//end 2players section
+//end both section

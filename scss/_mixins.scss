@@ -16,14 +16,6 @@ $container-width:(
     xl:1140px,
     xxl:1320px,
 );
-@mixin container-padding(){
-    @each $key , $val in $screen-size {
-        @media (min-width:$val){
-            padding-left:((map-get($screen-size,$key) - map-get($container-width,$key)) );
-            padding-right: ((map-get($screen-size,$key) - map-get($container-width,$key)));
-        }
-    }
-}
 //mixin for make element in container width for all screen
 @mixin container-all{
     @each $key , $val in $screen-size {
