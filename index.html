@@ -206,14 +206,14 @@
     <!--start stream section-->
     <section class="stream-section">
         <div class="stream-container">
-            <div class="head">
-                <h3>
-                    The Stream<br><span class="bold">Is <span class="red">Starting</span></span>
-                </h3>
-            </div>
             <div class="video">
-                <video src="./assets/Ulster Rugby pitch session - Ospreys week.mp4" controls poster="./assets/live-stream-player.png" muted
-                 loop >
+                <div class="head">
+                    <h3>
+                        The Stream<br><span class="bold">Is <span class="red">Starting</span></span>
+                    </h3>
+                </div>
+                <video controls muted loop poster="./assets/live-stream-player.png" >
+                    <source src="./assets/rugb.mp4" type="video/mp4">
                 </video>
                 <div class="left-border"></div>
                 <div class="bottom-border"></div>
@@ -278,14 +278,83 @@
         <div class="subscribe-container">
             <h3><span>Subscribe</span> To<br>Our Newsletter</h3>
             <form action="">
-                <input type="text">
-                <input type="email">
-                <textarea name="message" id="" cols="30" rows="10"></textarea>
+                <input type="text" placeholder="Your Name">
+                <input type="email" placeholder="Email">
+                <textarea name="message" id="" cols="30" rows="10" placeholder="Your message" style="resize: none;"></textarea>
                 <button type="submit">Send Message</button>
             </form>
         </div>
     </section>
     <!--end subscribe section-->
+
+    <!--start footer-->
+    <footer>
+        <div class="footer-container">
+            <div class="col-group">
+                <div class="col">
+                    <h5>About</h5>
+                    <ul>
+                        <li>
+                            <a href="#">History</a>
+                        </li>
+                        <li>
+                            <a href="#">Our Team</a>
+                        </li>
+                        <li>
+                            <a href="#">Mission Statement</a>
+                        </li>
+                        <li>
+                            <a href="#">Terms & Condition</a>
+                        </li>
+                        <li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>What We Do</h5>
+                    <ul>
+                        <li>
+                            <a href="#">News & Stories</a>
+                        </li>
+                        <li>
+                            <a href="#">Publications</a>
+                        </li>
+                        <li>
+                            <a href="#">Take Action</a>
+                        </li>
+                        <li>
+                            <a href="#">Recomendations</a>
+                        </li>
+                        <li>
+                            <a href="#">Help</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>Our Address</h5>
+                    <ul>
+                        <li>
+                            <a href="#">Haliumn Street 25/a>
+                        </li>
+                        <li>
+                            <a href="#">Jakarta City 1234</a>
+                        </li>
+                        <li>
+                            <a href="#">WWW.yoursite.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="social">
+                <p>Follow us!</p>
+                <i class="fa-brands fa-facebook-f icon"></i>
+                <i class="fa-brands fa-instagram icon"></i>
+                <i class="fa-brands fa-youtube icon"></i>
+            </div>
+        </div>
+    </footer>
+    <!--end footer-->
 
     <!--add font awesome js-->
     <script src="./js/all.min.js"></script>

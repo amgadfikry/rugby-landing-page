@@ -559,35 +559,39 @@ main{
     }
     .video{
         padding: 10px;
+        position: relative;
         video{
             width: 100%;
-            height: 100%;
+            height: 150%;
             margin: auto;
-            position: relative;
         }
         .left-border{
             width: 100%;
             height: 50%;
-            @include absolute(null,null,7px,7px,null,null);
+            @include absolute(null,null,8px,3px,null,null);
             border-left:10px solid $main-color;
+            z-index: -1;
         }
         .bottom-border{
             width: 50%;
             height: 100%;
-            @include absolute(null,null,7px,7px,null,null);
+            @include absolute(null,null,8px,3px,null,null);
             border-bottom: 10px solid $main-color;
+            z-index: -1;
         }
         .right-border{
             width: 100%;
             height: 50%;
-            @include absolute(7px,7px,null,null,null,null);
+            @include absolute(7px,3px,null,null,null,null);
             border-right: 10px solid $main-color;
+            z-index: -1;
         }
         .top-border{
             width: 50%;
             height: 100%;
-            @include absolute(7px,7px,null,null,null,null);
+            @include absolute(5px,3px,null,null,null,null);
             border-top: 10px solid $main-color;
+            z-index: -1;
         }
     }
 }
@@ -673,5 +677,132 @@ main{
 //end posts section
 
 //start subscribe section
+.subscribe-section{
+    @include container-full;
+    padding: 50px 10px;
+    .subscribe-container{
+        @include container-all;
+    }
+    h3{
+        color: white;
+        font-family: $head-font;
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 0.3rem;
+        text-align: center;
+        margin-bottom: 30px;
+        span{
+            font-family: inherit;
+            font-weight: inherit;
+            background-color: $red-color;
+            padding: 0 5px;
+        }
+    }
+    form{
+        padding:20px 10px ;
+        input,textarea{
+            padding: 10px ;
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            outline: none;
+            font-family: $head-font;
+            font-weight: 500;
+            letter-spacing: 1px;
+            border: 2px solid transparent;
+            @include media-min(lg){
+                width: 70%;
+                margin:0 auto 25px;
+            }
+            &::placeholder{
+                font-size: 1rem;
+                font-weight: 500;
+                font-family: $head-font;
+                color: #a8a8a8;
+            }
+            &:focus{
+                border: 2px solid $main-color;
+            }
+        }
+        button{
+            @include btn;
+            margin: auto;
+        }
+    }
 
+}
 //end subscribe section
+
+//start footer
+footer{
+    background-color: $main-color;
+    @include container-full;
+    padding: 50px;
+    .footer-container{
+        @include container-all;
+    }
+    .col-group{
+        @include grid();
+        @include grid(lg,3,);
+    }
+    .col{
+        @include flex(column,null,center);
+        margin-bottom: 20px;
+        h5{
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            position: relative;
+            padding: 5px 0 ;
+            z-index: 1;
+            &::after{
+                content: "";
+                background-color: white;
+                width: 110%;
+                height: 45%;
+                @include absolute(null,0,0,null,null,null);
+                z-index: -1;
+            }
+        }
+        li{
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        a{
+            color: black;
+            font-weight: 500;
+        }
+    }
+    .social{
+        @include flex(row,null,center);
+        width: fit-content;
+        margin: 30px auto 20px;
+        @include media-min(lg){
+            margin:30px 0 20px auto;
+        }
+        p{
+            padding: 0 3vw;
+            background-color: $red-color;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-right: 20px;
+        }
+        .icon{
+            font-size: 1.5rem;
+            padding: 5px;
+            cursor: pointer;
+            @include one-transition(0.3s,);
+            &:not(:last-child){
+                margin-right: 20px;
+            }
+            &:hover{
+                color: white;
+                background-color: $red-color;
+            }
+        }
+    }
+}
+//end footer
